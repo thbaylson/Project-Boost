@@ -6,6 +6,7 @@ public class Oscillator : MonoBehaviour
 {
     [SerializeField] Vector3 movementVector;
     [SerializeField] float period = 2f;
+    [SerializeField] float movementOffset = 1f;
 
     Vector3 startingPosition;
     const float tau = Mathf.PI * 2;//~6.283
@@ -27,7 +28,7 @@ public class Oscillator : MonoBehaviour
         //Goes from -1 to 1
         float rawSinWave = Mathf.Sin(cycles * tau);
         //Goes from 0 to 1
-        float movementFactor = (rawSinWave + 1f) / 2f;
+        float movementFactor = (rawSinWave + movementOffset) / 2f;
 
         //Move the object
         Vector3 offset = movementVector * movementFactor;
